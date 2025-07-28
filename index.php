@@ -1,61 +1,60 @@
-<?php 
-require 'function.php';
-session_start();
-if (!isset($_SESSION["login"])) {
-	header("location: login.php");
-	exit;
-}
-$mahasiswa = query ("SELECT * FROM blacklist");
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portofolio Rahman</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Rahman</h1>
+    <nav>
+      <ul>
+        <li><a href="#beranda">Beranda</a></li>
+        <li><a href="#tentang">Tentang Saya</a></li>
+        <li><a href="#portofolio">Portofolio</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+    </nav>
+  </header>
 
-if (isset($_POST["submit"])) :
-	$mahasiswa = cari($_POST["nama"]);
+  <section id="beranda" class="hero">
+    <h2>Halo, saya Rahman</h2>
+    <p>Web Developer | UI/UX Designer | Freelancer</p>
+  </section>
 
-endif;
-?>
+  <section id="tentang">
+    <h2>Tentang Saya</h2>
+    <p>Saya adalah pengembang web yang berpengalaman dalam membuat website interaktif dan responsif. Saya senang belajar teknologi baru dan menciptakan solusi digital kreatif.</p>
+  </section>
 
- <!DOCTYPE html>
- <html>
- <head>
- 	<title>Data Custumer Blacklist</title>
- </head>
- <body>
- 	<h1> Selamat datang Owner Rental Tarakan</h1>
- 	<h2>semoga kita semua selalu sehat dan di jauhkan dari tamu tidak bertanggung jawab</h2>
- <!-- koding pencarian data  -->
- 		<form action="" method="post">
-		 		<input type="text" name="nama" id="nama" size="40" autofocus autocomplete="off"
-		 		placeholder="Masukkan Keyword Pencarian ..">
-		 		<button type="submit" name="submit"> Cari</button>
-	
-		 	<br>
-		 	<br>
-<!-- koding Tambah data -->
- 		<a href="tambah.php"> Tambah Data</a>
- 		<br>
- 		<a href="loguot.php"> Keluar</a>
+  <section id="portofolio">
+    <h2>Portofolio</h2>
+    <div class="project">
+      <h3>Website Toko Online</h3>
+      <p>Membuat e-commerce menggunakan HTML, CSS, JavaScript, dan PHP.</p>
+    </div>
+    <div class="project">
+      <h3>Aplikasi Kasir</h3>
+      <p>Point of Sale berbasis web menggunakan Laravel dan MySQL.</p>
+    </div>
+  </section>
 
-<!-- koding tabel data -->
- 	<table border="1" cellpadding="10" cellspacing="0">
- 		<tr>
- 			<th>No. </th>
- 			<th>gambar</th>
- 			<th>Nama</th>
- 			<th>NIK</th>
- 			<th>TLP</th>
- 			<th>Ketengan</th>
- 		</tr>
+  <section id="kontak">
+    <h2>Kontak Saya</h2>
+    <form id="contactForm">
+      <input type="text" placeholder="Nama" required>
+      <input type="email" placeholder="Email" required>
+      <textarea placeholder="Pesan Anda..." required></textarea>
+      <button type="submit">Kirim</button>
+    </form>
+  </section>
 
- 		<?php $id = 1; ?>
- 		<?php foreach ($mahasiswa as $data):?>
- 		<tr>
- 			<td><?= $id; ?></td>
- 			<td><img src="img/<?= $data['gambar']?>" width="40"></td>
- 			<td><?= $data["nama"]; ?></td>
- 			<td><?= $data["nik"]; ?></td>
- 			<td><?= $data["tlp"]; ?></td>
- 			<td><?= $data["keterangan"]; ?></td>
- 		</tr>
- 	<?php $id++; endforeach; ?>
- 	</table>
- </body>
- </html>
+  <footer>
+    <p>&copy; 2025 Rahman. Semua Hak Dilindungi.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
